@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "age=0": { "model": "mlbestrogen:block/estrogen_crop_stage0" },
+        "age=1": { "model": "mlbestrogen:block/estrogen_crop_stage0" },
+        "age=2": { "model": "mlbestrogen:block/estrogen_crop_stage1" },
+        "age=3": { "model": "mlbestrogen:block/estrogen_crop_stage1" },
+        "age=4": { "model": "mlbestrogen:block/estrogen_crop_stage2" },
+        "age=5": { "model": "mlbestrogen:block/estrogen_crop_stage4" }
+    }
+}

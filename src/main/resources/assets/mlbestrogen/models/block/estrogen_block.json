@@ -1,0 +1,7 @@
+{
+    "parent": "minecraft:block/cube_all",
+    "textures": {
+		"all": "mlbestrogen:block/estrogen_block",
+        "particle": "mlbestrogen:item/estrogen"
+	}
+}
