@@ -5,6 +5,8 @@ import com.pawtuah.mlb.block.ModBlocks;
 import com.pawtuah.mlb.block.custom.EstrogenCropBlock;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -50,10 +52,13 @@ public class EstrogenMod
 
     // Creates a new Block with the id "examplemod:example_block", combining the namespace and path
     public static final RegistryObject<Block> ESTROGEN_CROP = BLOCKS.register("estrogen_crop",
-            () -> new EstrogenCropBlock(BlockBehaviour.Properties.copy(Blocks.POTATOES).noOcclusion()));
+            () -> new EstrogenCropBlock(BlockBehaviour.Properties.copy(Blocks.POTATOES).noOcclusion().dynamicShape()));
 
     public static final RegistryObject<Block> ESTROGEN_BLOCK = BLOCKS.register("estrogen_block",
             () -> new Block(BlockBehaviour.Properties.of().lightLevel(state -> 7)));
+
+    public static final RegistryObject<Block> ESTROGEN_CRATE = BLOCKS.register("estrogen_crate", () -> new Block(BlockBehaviour.Properties.of().destroyTime(0.2f).noOcclusion()));
+    public static final RegistryObject<Item> ESTROGEN_CRATE_ITEM = ITEMS.register("estrogen_crate", () -> new BlockItem(ESTROGEN_CRATE.get(), new Item.Properties()));
 
     // Creates a new BlockItem with the id "examplemod:example_block", combining the namespace and path
     public static final RegistryObject<Item> ESTROGEN_BLOCK_ITEM = ITEMS.register("estrogen_block", () -> new BlockItem(ESTROGEN_BLOCK.get(), new Item.Properties()));
@@ -70,7 +75,8 @@ public class EstrogenMod
             .displayItems((parameters, output) -> {
                 output.accept(ESTROGEN_ITEM.get());
                 output.accept(ESTROGEN_BLOCK_ITEM.get());
-                output.accept(ESTROGEN_BLOCK.get());// Add the example item to the tab. For your own tabs, this method is preferred over the event
+                output.accept(ESTROGEN_BLOCK.get());
+                output.accept(ESTROGEN_CRATE_ITEM.get()); // Add the example item to the tab. For your own tabs, this method is preferred over the event
             }).build());
 
     public EstrogenMod(FMLJavaModLoadingContext context)
@@ -122,7 +128,7 @@ public class EstrogenMod
     public void onServerStarting(ServerStartingEvent event)
     {
         // Do something when the server starts
-        LOGGER.info("HELLO from server starting");
+        LOGGER.info("HELLO from estrogen");
     }
 
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
@@ -133,7 +139,7 @@ public class EstrogenMod
         public static void onClientSetup(FMLClientSetupEvent event)
         {
             // Some client setup code
-            LOGGER.info("HELLO FROM CLIENT SETUP");
+            LOGGER.info("HELLO FROM ESTROGEN");
             LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
         }
     }
