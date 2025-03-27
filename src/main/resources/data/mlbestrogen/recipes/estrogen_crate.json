@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "estrogen",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "mlbestrogen:estrogen_block"
+    }
+  },
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "result": {
+    "item": "mlbestrogen:estrogen_crate"
+  },
+  "show_notification": true
+}
